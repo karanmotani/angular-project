@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 import { Recipe } from '../../recipe.model';
+import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,18 +11,21 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
   // Create a property which we want to bind
   // It should have the same name which we are using in the template to render the data
-  // It should have the same type as of the daat we are rendering in the template
+  // It should have the same type as of the data we are rendering in the template
   @Input() recipe: Recipe;
   // Sends no information, argument set to void
-  @Output() recipeSelected = new EventEmitter<void>();
+  // @Output() recipeSelected = new EventEmitter<void>();
 
-  constructor() { }
+
+
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
   }
 
   onSelected() {
-    this.recipeSelected.emit();
+    // this.recipeSelected.emit();
+    this.recipeService.recipeSelected.emit(this.recipe);
   }
 
 }
