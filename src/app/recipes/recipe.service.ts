@@ -34,6 +34,10 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     // We want to add multiple ingredients to the Ingredients list
     // Created a new method in shopping-list service for the same
